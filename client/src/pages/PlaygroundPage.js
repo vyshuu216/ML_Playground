@@ -9,6 +9,7 @@ import './PlaygroundPage.css';
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
 const API_URL = import.meta.env.VITE_API_URL;
+console.log("API_URL =", API_URL);
 const ALGORITHMS = [
   { id: 'linear_regression', label: 'Linear Regression', desc: 'Fit a line through data points', color: '#00e5ff' },
   { id: 'kmeans', label: 'K-Means Clustering', desc: 'Group data into k clusters', color: '#a855f7' },
