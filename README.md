@@ -6,7 +6,7 @@ An interactive Machine Learning Playground built with the MERN stack that allows
 
 🔗 Frontend: https://ml-playground-iota.vercel.app
 
-🔗 Backend API: https://ml-playground-2q7u.onrender.com/api
+🔗 Backend API: https://ml-playground-2q7u.onrender.com/api/health
 
 ---
 
