@@ -8,7 +8,7 @@ import { Scatter } from 'react-chartjs-2';
 import './PlaygroundPage.css';
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
-
+const API_URL = import.meta.env.VITE_API_URL;
 const ALGORITHMS = [
   { id: 'linear_regression', label: 'Linear Regression', desc: 'Fit a line through data points', color: '#00e5ff' },
   { id: 'kmeans', label: 'K-Means Clustering', desc: 'Group data into k clusters', color: '#a855f7' },
@@ -28,7 +28,10 @@ export default function PlaygroundPage() {
   const run = async () => {
     setLoading(true); setError(''); setResult(null); setSaved(false);
     try {
-      const res = await axios.post('/api/ml/run', { algorithm: selected, parameters: params });
+      const res = await axios.post(`${API_URL}/api/ml/run`, {
+  algorithm: selected,
+  parameters: params
+});
       setResult(res.data);
     } catch (err) {
       setError(err.response?.data?.error || 'Failed to run algorithm');
@@ -40,7 +43,7 @@ export default function PlaygroundPage() {
   const save = async () => {
     if (!result) return;
     try {
-      await axios.post('/api/experiments', {
+      await axios.post(`${API_URL}/api/experiments`, {
         name: `${selected} — ${new Date().toLocaleString()}`,
         algorithm: selected, parameters: params,
         results: result.results, insights: result.insights,
